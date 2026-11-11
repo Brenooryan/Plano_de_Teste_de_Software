@@ -1,0 +1,7 @@
+# --- Aplicação ---
+fastapi==0.136.3        # framework da API (rotas, validação, Swagger)
+uvicorn==0.34.0         # servidor que executa a API
+
+# --- Testes ---
+pytest==9.0.3           # executor de testes
+httpx==0.28.1           # cliente HTTP usado pelo TestClient do FastAPI
