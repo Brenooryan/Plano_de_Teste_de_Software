@@ -1,6 +1,7 @@
 # --- Aplicação ---
 fastapi==0.136.3        # framework da API (rotas, validação, Swagger)
 uvicorn==0.34.0         # servidor que executa a API
+sqlalchemy==2.0.51      # ORM: mapeia classes Python para tabelas do banco
 
 # --- Testes ---
 pytest==9.0.3           # executor de testes
