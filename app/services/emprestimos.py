@@ -2,7 +2,7 @@
 
 from datetime import date
 
-from sqlalchemy import func, select
+from sqlalchemy import func, select, text
 from sqlalchemy.orm import Session
 
 from app.config import LIMITE_EMPRESTIMOS
@@ -51,12 +51,32 @@ def listar_emprestimos_do_usuario(sessao: Session, usuario_id: int) -> list[Empr
 
 def emprestar(sessao: Session, usuario_id: int, exemplar_id: int, hoje: date) -> Emprestimo:
     """Registra um empréstimo, se todas as condições do RF14 forem atendidas."""
+    try:
+        # Correção do DEF-01 (condição de corrida): pega a trava de escrita do
+        # banco ANTES de ler qualquer dado. Um pedido simultâneo fica esperando
+        # nesta linha e, quando entra, já lê o estado deixado pelo anterior.
+        sessao.execute(text("BEGIN IMMEDIATE"))
+
+        emprestimo = _registrar_emprestimo(sessao, usuario_id, exemplar_id, hoje)
+
+        sessao.commit()  # grava tudo e libera a trava
+        return emprestimo
+    except Exception:
+        sessao.rollback()  # desfaz tudo e libera a trava
+        raise
+
+
+def _registrar_emprestimo(
+    sessao: Session, usuario_id: int, exemplar_id: int, hoje: date
+) -> Emprestimo:
+    """Lê, decide e prepara a gravação. Deve rodar dentro da trava de escrita."""
     # 1. Busca os dados
     usuario = sessao.get(Usuario, usuario_id)
     if usuario is None:
         raise NaoEncontradoError("Usuário não encontrado")
 
-    exemplar = sessao.get(Exemplar, exemplar_id)
+    # populate_existing: relê o exemplar do banco mesmo que a sessão já o conheça
+    exemplar = sessao.get(Exemplar, exemplar_id, populate_existing=True)
     if exemplar is None:
         raise NaoEncontradoError("Exemplar não encontrado")
 
@@ -71,7 +91,7 @@ def emprestar(sessao: Session, usuario_id: int, exemplar_id: int, hoje: date) ->
     if motivo is not None:
         raise RegraDeNegocioError(motivo.value, _mensagem_de_recusa(motivo, usuario.perfil))
 
-    # 3. Grava tudo em uma única transação (RNF05)
+    # 3. Prepara a gravação; o commit é feito por quem pegou a trava (RNF05)
     emprestimo = Emprestimo(
         usuario=usuario,
         exemplar=exemplar,
@@ -80,7 +100,6 @@ def emprestar(sessao: Session, usuario_id: int, exemplar_id: int, hoje: date) ->
     )
     exemplar.estado = EstadoExemplar.EMPRESTADO  # RF17
     sessao.add(emprestimo)
-    sessao.commit()
     return emprestimo
 
 
