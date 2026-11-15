@@ -1,0 +1,79 @@
+# Teste dinâmico de segurança (DAST): o OWASP ZAP ataca a API em execução.
+# Roda a cada push e também pode ser disparado à mão, pela aba Actions.
+
+name: Segurança (DAST)
+
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  zap:
+    name: Scan dinâmico com OWASP ZAP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v6
+
+      - name: Configurar o Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar as dependências
+        run: python -m pip install -r requirements.txt
+
+      - name: Subir a API
+        run: |
+          nohup python -m uvicorn app.main:app > uvicorn.log 2>&1 &
+          for tentativa in $(seq 1 30); do
+            if curl --silent --fail http://localhost:8000/health > /dev/null; then
+              echo "API no ar após $tentativa tentativa(s)"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "A API não subiu:"
+          cat uvicorn.log
+          exit 1
+
+      - name: Obter o token do bibliotecário
+        run: |
+          TOKEN=$(curl --silent --fail -X POST http://localhost:8000/auth/login \
+            -H "Content-Type: application/json" \
+            -d '{"email": "bibliotecario@biblioteca.local", "senha": "biblio1234"}' \
+            | python -c "import json, sys; print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$TOKEN"
+          echo "TOKEN=$TOKEN" >> "$GITHUB_ENV"
+
+      - name: Executar o scan da API
+        run: |
+          mkdir -p zap
+          chmod 777 zap
+          docker run --rm --network host \
+            -v "$PWD/zap:/zap/wrk:rw" \
+            -e ZAP_AUTH_HEADER_VALUE="Bearer $TOKEN" \
+            ghcr.io/zaproxy/zaproxy:stable \
+            zap-api-scan.py \
+            -t http://localhost:8000/openapi.json \
+            -f openapi \
+            -r relatorio-zap.html \
+            -w relatorio-zap.md \
+            -J relatorio-zap.json \
+            -I
+
+      - name: "Quality gate 3: nenhum alerta de risco alto e nenhum erro 500"
+        run: python scripts/resumo_seguranca.py zap/relatorio-zap.json uvicorn.log
+
+      - name: Guardar os relatórios
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: relatorios-de-seguranca
+          path: |
+            zap/
+            uvicorn.log
+          if-no-files-found: warn
