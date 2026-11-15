@@ -2,16 +2,23 @@
 
 from datetime import date
 from decimal import Decimal
+from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
+
+from app.config import MAIOR_ID
+
+# Correção do DEF-02: todo identificador recebido tem faixa válida declarada.
+# Fora dela, a própria validação responde 422, antes de chegar ao banco.
+IdNoCorpo = Annotated[int, Field(ge=1, le=MAIOR_ID)]
 
 
 class EmprestimoEntrada(BaseModel):
-    exemplar_id: int
+    exemplar_id: IdNoCorpo
 
 
 class DevolucaoEntrada(BaseModel):
-    exemplar_id: int
+    exemplar_id: IdNoCorpo
 
 
 class EmprestimoSaida(BaseModel):

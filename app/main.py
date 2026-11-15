@@ -5,6 +5,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.api import acervo, auth, emprestimos, multas, usuarios
+from app.api.cabecalhos import registrar_cabecalhos_de_seguranca
 from app.api.erros import registrar_tratadores_de_erro
 from app.dados_iniciais import criar_dados_iniciais
 from app.database import Base, SessionLocal, engine
@@ -27,6 +28,7 @@ app = FastAPI(
 )
 
 registrar_tratadores_de_erro(app)
+registrar_cabecalhos_de_seguranca(app)
 
 app.include_router(auth.router)
 app.include_router(usuarios.router)

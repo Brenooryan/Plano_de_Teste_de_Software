@@ -17,6 +17,10 @@ CHAVE_SECRETA = os.environ.get(
     "BIBLIOTECA_CHAVE_SECRETA", "chave-de-desenvolvimento-nao-usar-em-producao"
 )
 
+# --- Identificadores (RNF07) ---
+# Maior inteiro que o SQLite armazena. Um id acima disso é entrada inválida.
+MAIOR_ID = 2**63 - 1
+
 # --- Empréstimo (RF15 e RF16) ---
 LIMITE_EMPRESTIMOS = {
     Perfil.ALUNO: 3,

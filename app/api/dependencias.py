@@ -7,11 +7,13 @@ Nos testes, cada dependência pode ser trocada por outra.
 
 from collections.abc import Callable, Iterator
 from datetime import date
+from typing import Annotated
 
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, Path, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
+from app.config import MAIOR_ID
 from app.database import SessionLocal
 from app.enums import Perfil
 from app.models import Usuario
@@ -23,6 +25,10 @@ from app.seguranca import ler_token
 _esquema_bearer = HTTPBearer(auto_error=False)
 
 _SEM_PERMISSAO = "Sem permissão para esta operação"
+
+# Correção do DEF-02: identificador recebido no caminho da URL, com faixa válida.
+# Fora dela, a própria validação responde 422, antes de chegar ao banco.
+IdNoCaminho = Annotated[int, Path(ge=1, le=MAIOR_ID)]
 
 
 def obter_sessao() -> Iterator[Session]:
@@ -77,7 +83,7 @@ apenas_leitores = exigir_perfil(Perfil.ALUNO, Perfil.PROFESSOR)
 
 
 def proprio_usuario_ou_bibliotecario(
-    usuario_id: int,
+    usuario_id: IdNoCaminho,
     usuario: Usuario = Depends(obter_usuario_atual),
 ) -> Usuario:
     """RF08: cada um vê só os próprios dados; o bibliotecário vê os de todos.

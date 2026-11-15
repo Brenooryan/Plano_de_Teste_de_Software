@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from app.api.dependencias import (
+    IdNoCaminho,
     apenas_bibliotecario,
     apenas_leitores,
     obter_data_atual,
@@ -61,7 +62,7 @@ def registrar_devolucao(
     dependencies=[Depends(proprio_usuario_ou_bibliotecario)],
 )
 def listar_emprestimos(
-    usuario_id: int, sessao: Session = Depends(obter_sessao)
+    usuario_id: IdNoCaminho, sessao: Session = Depends(obter_sessao)
 ) -> list[EmprestimoSaida]:
     """Empréstimos de um usuário: só ele mesmo ou o bibliotecário podem ver."""
     emprestimos = listar_emprestimos_do_usuario(sessao, usuario_id)

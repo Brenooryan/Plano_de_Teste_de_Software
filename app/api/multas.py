@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.api.dependencias import (
+    IdNoCaminho,
     apenas_bibliotecario,
     obter_sessao,
     proprio_usuario_ou_bibliotecario,
@@ -19,7 +20,9 @@ router = APIRouter(tags=["Multas"])
     response_model=list[MultaSaida],
     dependencies=[Depends(proprio_usuario_ou_bibliotecario)],
 )
-def listar_multas(usuario_id: int, sessao: Session = Depends(obter_sessao)) -> list[MultaSaida]:
+def listar_multas(
+    usuario_id: IdNoCaminho, sessao: Session = Depends(obter_sessao)
+) -> list[MultaSaida]:
     """Multas de um usuário: só ele mesmo ou o bibliotecário podem ver."""
     return [MultaSaida.model_validate(m) for m in listar_multas_do_usuario(sessao, usuario_id)]
 
@@ -29,6 +32,8 @@ def listar_multas(usuario_id: int, sessao: Session = Depends(obter_sessao)) -> l
     response_model=MultaSaida,
     dependencies=[Depends(apenas_bibliotecario)],
 )
-def registrar_pagamento(multa_id: int, sessao: Session = Depends(obter_sessao)) -> MultaSaida:
+def registrar_pagamento(
+    multa_id: IdNoCaminho, sessao: Session = Depends(obter_sessao)
+) -> MultaSaida:
     """O bibliotecário registra o pagamento integral da multa."""
     return MultaSaida.model_validate(pagar_multa(sessao, multa_id))
