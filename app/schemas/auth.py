@@ -10,4 +10,5 @@ class LoginEntrada(BaseModel):
 
 class TokenSaida(BaseModel):
     access_token: str
-    token_type: str = "bearer"
+    # "bearer" é o nome do tipo de token, não uma senha: falso positivo da regra S105
+    token_type: str = "bearer"  # noqa: S105

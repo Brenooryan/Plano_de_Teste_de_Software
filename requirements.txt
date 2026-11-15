@@ -7,3 +7,7 @@ pyjwt==2.15.0           # geração e validação dos tokens de acesso (JWT)
 # --- Testes ---
 pytest==9.0.3           # executor de testes
 httpx==0.28.1           # cliente HTTP usado pelo TestClient do FastAPI
+pytest-cov==7.1.0       # mede a cobertura de código durante os testes
+
+# --- Qualidade ---
+ruff==0.16.9            # análise estática: estilo, erros prováveis e segurança

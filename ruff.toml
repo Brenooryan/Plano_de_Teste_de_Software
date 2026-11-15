@@ -1,0 +1,20 @@
+# Configuração da análise estática (ruff)
+
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = [
+    "E",  # estilo (pycodestyle)
+    "W",  # avisos de estilo
+    "F",  # erros prováveis: nomes indefinidos, importações sem uso
+    "B",  # armadilhas comuns que costumam virar bug (bugbear)
+    "S",  # segurança: as mesmas regras da ferramenta bandit
+]
+ignore = [
+    "B008",  # Depends(...) como valor padrão é o uso documentado do FastAPI
+]
+
+[lint.per-file-ignores]
+# Em testes, assert é o esperado (S101) e senhas de exemplo são inevitáveis (S105, S106)
+"tests/**" = ["S101", "S105", "S106"]
