@@ -67,6 +67,13 @@ def test_bibliotecario_consulta_usuario_inexistente(cliente, cabecalho_bibliotec
     assert resposta.status_code == 404
 
 
+def test_bibliotecario_consulta_multas_de_usuario_inexistente(cliente, cabecalho_bibliotecario):
+    resposta = cliente.get(f"/usuarios/{ID_INEXISTENTE}/multas", headers=cabecalho_bibliotecario)
+
+    assert resposta.status_code == 404
+    assert resposta.json() == {"detail": "Usuário não encontrado"}
+
+
 def test_aluno_nao_descobre_se_um_id_existe(cliente, cabecalho_aluno):
     # Para quem não tem permissão, id existente e inexistente dão a mesma resposta
     resposta = cliente.get(f"/usuarios/{ID_INEXISTENTE}/emprestimos", headers=cabecalho_aluno)
