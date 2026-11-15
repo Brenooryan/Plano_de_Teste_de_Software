@@ -41,6 +41,14 @@ def contar_emprestimos_ativos(sessao: Session, usuario_id: int) -> int:
     return sessao.scalar(consulta) or 0
 
 
+def listar_emprestimos_do_usuario(sessao: Session, usuario_id: int) -> list[Emprestimo]:
+    if sessao.get(Usuario, usuario_id) is None:
+        raise NaoEncontradoError("Usuário não encontrado")
+
+    consulta = select(Emprestimo).where(Emprestimo.usuario_id == usuario_id).order_by(Emprestimo.id)
+    return list(sessao.scalars(consulta))
+
+
 def emprestar(sessao: Session, usuario_id: int, exemplar_id: int, hoje: date) -> Emprestimo:
     """Registra um empréstimo, se todas as condições do RF14 forem atendidas."""
     # 1. Busca os dados

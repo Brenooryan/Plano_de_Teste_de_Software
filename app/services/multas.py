@@ -4,7 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.excecoes import NaoEncontradoError, RegraDeNegocioError
-from app.models import Multa
+from app.models import Multa, Usuario
 
 
 def tem_multa_pendente(sessao: Session, usuario_id: int) -> bool:
@@ -15,6 +15,14 @@ def tem_multa_pendente(sessao: Session, usuario_id: int) -> bool:
         .limit(1)
     )
     return sessao.scalars(consulta).first() is not None
+
+
+def listar_multas_do_usuario(sessao: Session, usuario_id: int) -> list[Multa]:
+    if sessao.get(Usuario, usuario_id) is None:
+        raise NaoEncontradoError("Usuário não encontrado")
+
+    consulta = select(Multa).where(Multa.usuario_id == usuario_id).order_by(Multa.id)
+    return list(sessao.scalars(consulta))
 
 
 def pagar_multa(sessao: Session, multa_id: int) -> Multa:
