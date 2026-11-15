@@ -4,9 +4,18 @@ Todos os números das regras de negócio ficam aqui. Se uma regra mudar,
 a alteração é feita em um único lugar.
 """
 
+import os
 from decimal import Decimal
 
 from app.enums import Perfil
+
+# --- Autenticação (RF04) ---
+VALIDADE_TOKEN_MINUTOS = 30
+# Chave que assina os tokens. Em produção, vem da variável de ambiente;
+# o valor padrão existe apenas para desenvolvimento e testes.
+CHAVE_SECRETA = os.environ.get(
+    "BIBLIOTECA_CHAVE_SECRETA", "chave-de-desenvolvimento-nao-usar-em-producao"
+)
 
 # --- Empréstimo (RF15 e RF16) ---
 LIMITE_EMPRESTIMOS = {

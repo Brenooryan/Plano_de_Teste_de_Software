@@ -1,12 +1,32 @@
 """Ponto de entrada da API: cria a aplicação e registra as rotas."""
 
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
+
+from app.api import acervo, auth
+from app.dados_iniciais import criar_dados_iniciais
+from app.database import Base, SessionLocal, engine
+
+
+@asynccontextmanager
+async def ao_iniciar(_app: FastAPI):
+    """Executado uma vez na subida do servidor: cria tabelas e dados iniciais."""
+    Base.metadata.create_all(engine)
+    with SessionLocal() as sessao:
+        criar_dados_iniciais(sessao)
+    yield
+
 
 app = FastAPI(
     title="API de Biblioteca",
     description="Sistema-alvo do Plano de Teste de Software (TS09).",
-    version="0.1.0",
+    version="0.2.0",
+    lifespan=ao_iniciar,
 )
+
+app.include_router(auth.router)
+app.include_router(acervo.router)
 
 
 @app.get("/health", tags=["Infraestrutura"])
