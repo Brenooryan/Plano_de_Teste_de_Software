@@ -1,0 +1,78 @@
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+
+     execution: local
+        script: perf\carga.js
+        output: -
+
+     scenarios: (100.00%) 3 scenarios, 60 max VUs, 13m20s max duration (incl. graceful stop):
+              * leitura: 50 looping VUs for 2m0s (exec: consultarAcervo, gracefulStop: 30s)
+              * login: 10 looping VUs for 30s (exec: fazerLogin, startTime: 2m10s, gracefulStop: 30s)
+              * concorrencia: 1 iterations for each of 20 VUs (maxDuration: 10m0s, exec: emprestarMesmoExemplar, startTime: 2m50s, gracefulStop: 30s)
+
+INFO[0000] Exemplar disputado no cenário de concorrência: 8  source=console
+INFO[0170] VERIFICACAO RNF05: emprestimos ativos do exemplar 8 = 0 (esperado: 1)  source=console
+INFO[0170] VERIFICACAO RF15: emprestimos ativos do aluno = 4 (limite: 3)  source=console
+
+
+  █ THRESHOLDS
+
+    emprestimos_aceitos
+    ✗ 'count==1' count=0
+
+    erros_consulta
+    ✓ 'rate<0.01' rate=0.00%
+
+    respostas_inesperadas
+    ✓ 'count==0' count=0
+
+    tempo_consulta
+    ✓ 'p(95)<500' p(95)=16.34ms
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......: 8981    52.764093/s
+    checks_succeeded...: 100.00% 8981 out of 8981
+    checks_failed......: 0.00%   0 out of 8981
+
+    ✓ consulta respondeu 200
+    ✓ login respondeu 200
+
+    CUSTOM
+    emprestimos_aceitos............: 0      0/s
+    emprestimos_recusados..........: 20     0.117502/s
+    erros_consulta.................: 0.00%  0 out of 5992
+    erros_login....................: 0.00%  0 out of 2989
+    respostas_inesperadas..........: 0      0/s
+    tempo_consulta.................: avg=6.5ms    min=1.01ms  med=4.03ms   max=131.96ms p(90)=12.88ms  p(95)=16.34ms
+    tempo_login....................: avg=100.42ms min=78.22ms med=100.27ms max=151.14ms p(90)=106.67ms p(95)=109.91ms
+
+    HTTP
+    http_req_duration..............: avg=37.79ms  min=1.01ms  med=7.43ms   max=151.14ms p(90)=103ms    p(95)=105.27ms
+      { expected_response:true }...: avg=37.79ms  min=1.01ms  med=7.43ms   max=151.14ms p(90)=103ms    p(95)=105.27ms
+    http_req_failed................: 0.00%  0 out of 9006
+    http_reqs......................: 9006   52.91097/s
+
+    EXECUTION
+    iteration_duration.............: avg=703.77ms min=50.87ms med=1s       max=1.13s    p(90)=1.01s    p(95)=1.01s
+    iterations.....................: 9001   52.881594/s
+    vus............................: 0      min=0         max=50
+    vus_max........................: 60     min=60        max=60
+
+    NETWORK
+    data_received..................: 7.0 MB 41 kB/s
+    data_sent......................: 2.1 MB 12 kB/s
+
+
+
+
+running (02m50.2s), 00/60 VUs, 9001 complete and 0 interrupted iterations
+leitura      ✓ [======================================] 50 VUs  2m0s
+login        ✓ [======================================] 10 VUs  30s
+concorrencia ✓ [======================================] 20 VUs  00m00.1s/10m0s  20/20 iters, 1 per VU
+ERRO[0170] thresholds on metrics 'emprestimos_aceitos' have been crossed

@@ -1,0 +1,207 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.7.0 -- C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.16.0, cov-7.1.0
+collecting ... collected 147 items
+
+tests/integration/test_concorrencia.py::test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[1] PASSED [  0%]
+tests/integration/test_concorrencia.py::test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[2] PASSED [  1%]
+tests/integration/test_concorrencia.py::test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[3] PASSED [  2%]
+tests/integration/test_dados_iniciais.py::test_dados_iniciais_nao_sao_duplicados_na_segunda_execucao PASSED [  2%]
+tests/integration/test_emprestimos.py::test_emprestar_grava_emprestimo_e_muda_estado_do_exemplar PASSED [  3%]
+tests/integration/test_emprestimos.py::test_exemplar_emprestado_nao_pode_ser_emprestado_de_novo PASSED [  4%]
+tests/integration/test_emprestimos.py::test_aluno_no_limite_tem_o_quarto_emprestimo_recusado PASSED [  4%]
+tests/integration/test_emprestimos.py::test_devolucao_libera_vaga_no_limite PASSED [  5%]
+tests/integration/test_emprestimos.py::test_usuario_inativo_nao_pode_emprestar PASSED [  6%]
+tests/integration/test_emprestimos.py::test_emprestar_para_usuario_inexistente PASSED [  6%]
+tests/integration/test_emprestimos.py::test_emprestar_exemplar_inexistente PASSED [  7%]
+tests/integration/test_emprestimos.py::test_devolucao_no_prazo_encerra_emprestimo_sem_multa PASSED [  8%]
+tests/integration/test_emprestimos.py::test_devolver_exemplar_disponivel_e_recusado PASSED [  8%]
+tests/integration/test_emprestimos.py::test_devolver_exemplar_inexistente PASSED [  9%]
+tests/integration/test_emprestimos.py::test_ciclo_de_estados_do_exemplar PASSED [ 10%]
+tests/integration/test_models.py::test_usuario_e_gravado_com_valores_padrao PASSED [ 10%]
+tests/integration/test_models.py::test_email_duplicado_e_recusado PASSED [ 11%]
+tests/integration/test_models.py::test_isbn_duplicado_e_recusado PASSED  [ 12%]
+tests/integration/test_models.py::test_exemplar_novo_inicia_disponivel PASSED [ 12%]
+tests/integration/test_models.py::test_exemplar_de_livro_inexistente_e_recusado PASSED [ 13%]
+tests/integration/test_models.py::test_emprestimo_novo_esta_ativo PASSED [ 14%]
+tests/integration/test_models.py::test_emprestimo_devolvido_deixa_de_estar_ativo PASSED [ 14%]
+tests/integration/test_models.py::test_multa_nova_esta_pendente_e_converte_centavos PASSED [ 15%]
+tests/integration/test_models.py::test_segunda_multa_para_o_mesmo_emprestimo_e_recusada PASSED [ 16%]
+tests/integration/test_multas.py::test_valor_da_multa_gravada_na_devolucao[0-None] PASSED [ 17%]
+tests/integration/test_multas.py::test_valor_da_multa_gravada_na_devolucao[1-multa_esperada1] PASSED [ 17%]
+tests/integration/test_multas.py::test_valor_da_multa_gravada_na_devolucao[30-multa_esperada2] PASSED [ 18%]
+tests/integration/test_multas.py::test_valor_da_multa_gravada_na_devolucao[31-multa_esperada3] PASSED [ 19%]
+tests/integration/test_multas.py::test_multa_nasce_pendente_e_ligada_ao_usuario PASSED [ 19%]
+tests/integration/test_multas.py::test_ciclo_de_estados_do_usuario PASSED [ 20%]
+tests/integration/test_multas.py::test_multa_pendente_bloqueia_emprestimo_e_pagamento_libera PASSED [ 21%]
+tests/integration/test_multas.py::test_pagar_multa_ja_paga_e_recusado PASSED [ 21%]
+tests/integration/test_multas.py::test_pagar_multa_inexistente PASSED    [ 22%]
+tests/system/test_acervo.py::test_usuario_autenticado_lista_os_livros PASSED [ 23%]
+tests/system/test_acervo.py::test_resposta_do_acervo_tem_apenas_os_campos_publicos PASSED [ 23%]
+tests/system/test_auth.py::test_login_valido_devolve_token PASSED        [ 24%]
+tests/system/test_auth.py::test_login_com_senha_errada_e_recusado PASSED [ 25%]
+tests/system/test_auth.py::test_login_nao_revela_se_o_email_existe PASSED [ 25%]
+tests/system/test_auth.py::test_login_sem_o_campo_senha_e_dado_invalido PASSED [ 26%]
+tests/system/test_auth.py::test_rota_protegida_sem_token_e_recusada PASSED [ 27%]
+tests/system/test_auth.py::test_rota_protegida_com_token_invalido_e_recusada PASSED [ 27%]
+tests/system/test_auth.py::test_rota_protegida_com_token_expirado_e_recusada PASSED [ 28%]
+tests/system/test_auth.py::test_rota_protegida_com_esquema_diferente_de_bearer_e_recusada PASSED [ 29%]
+tests/system/test_auth.py::test_token_de_usuario_que_nao_existe_e_recusado PASSED [ 29%]
+tests/system/test_cabecalhos.py::test_toda_resposta_traz_os_cabecalhos_de_seguranca[/health-200] PASSED [ 30%]
+tests/system/test_cabecalhos.py::test_toda_resposta_traz_os_cabecalhos_de_seguranca[/livros-401] PASSED [ 31%]
+tests/system/test_cabecalhos.py::test_toda_resposta_traz_os_cabecalhos_de_seguranca[/rota-que-nao-existe-404] PASSED [ 31%]
+tests/system/test_emprestimos.py::test_aluno_empresta_exemplar_disponivel PASSED [ 32%]
+tests/system/test_emprestimos.py::test_professor_recebe_prazo_de_14_dias PASSED [ 33%]
+tests/system/test_emprestimos.py::test_emprestimo_sem_token_e_recusado PASSED [ 34%]
+tests/system/test_emprestimos.py::test_bibliotecario_nao_pode_emprestar PASSED [ 34%]
+tests/system/test_emprestimos.py::test_emprestar_exemplar_inexistente PASSED [ 35%]
+tests/system/test_emprestimos.py::test_emprestar_exemplar_ja_emprestado PASSED [ 36%]
+tests/system/test_emprestimos.py::test_aluno_tem_o_quarto_emprestimo_recusado PASSED [ 36%]
+tests/system/test_emprestimos.py::test_professor_tem_o_sexto_emprestimo_recusado PASSED [ 37%]
+tests/system/test_emprestimos.py::test_emprestimo_com_dado_invalido PASSED [ 38%]
+tests/system/test_emprestimos.py::test_bibliotecario_registra_devolucao_no_prazo PASSED [ 38%]
+tests/system/test_emprestimos.py::test_aluno_nao_pode_registrar_devolucao PASSED [ 39%]
+tests/system/test_emprestimos.py::test_devolver_exemplar_que_nao_esta_emprestado PASSED [ 40%]
+tests/system/test_emprestimos.py::test_devolver_exemplar_inexistente PASSED [ 40%]
+tests/system/test_health.py::test_health_retorna_200_e_status_ok PASSED  [ 41%]
+tests/system/test_identificadores.py::test_id_no_caminho_no_limite_superior_e_valido[GET-/usuarios/{id}/emprestimos] PASSED [ 42%]
+tests/system/test_identificadores.py::test_id_no_caminho_no_limite_superior_e_valido[GET-/usuarios/{id}/multas] PASSED [ 42%]
+tests/system/test_identificadores.py::test_id_no_caminho_no_limite_superior_e_valido[POST-/multas/{id}/pagamento] PASSED [ 43%]
+tests/system/test_identificadores.py::test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[GET-/usuarios/{id}/emprestimos] PASSED [ 44%]
+tests/system/test_identificadores.py::test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[GET-/usuarios/{id}/multas] PASSED [ 44%]
+tests/system/test_identificadores.py::test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[POST-/multas/{id}/pagamento] PASSED [ 45%]
+tests/system/test_identificadores.py::test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[GET-/usuarios/{id}/emprestimos] PASSED [ 46%]
+tests/system/test_identificadores.py::test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[GET-/usuarios/{id}/multas] PASSED [ 46%]
+tests/system/test_identificadores.py::test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[POST-/multas/{id}/pagamento] PASSED [ 47%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_na_devolucao[9223372036854775807-404] PASSED [ 48%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_na_devolucao[9223372036854775808-422] PASSED [ 48%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_na_devolucao[0-422] PASSED [ 49%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_no_emprestimo[9223372036854775807-404] PASSED [ 50%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_no_emprestimo[9223372036854775808-422] PASSED [ 51%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_no_emprestimo[0-422] PASSED [ 51%]
+tests/system/test_multas.py::test_devolucao_atrasada_gera_multa[1-1.00] PASSED [ 52%]
+tests/system/test_multas.py::test_devolucao_atrasada_gera_multa[30-30.00] PASSED [ 53%]
+tests/system/test_multas.py::test_devolucao_atrasada_gera_multa[31-30.00] PASSED [ 53%]
+tests/system/test_multas.py::test_aceitacao_multa_bloqueia_e_pagamento_libera PASSED [ 54%]
+tests/system/test_multas.py::test_aluno_nao_pode_registrar_pagamento PASSED [ 55%]
+tests/system/test_multas.py::test_pagar_a_mesma_multa_duas_vezes PASSED  [ 55%]
+tests/system/test_multas.py::test_pagar_multa_inexistente PASSED         [ 56%]
+tests/system/test_permissoes.py::test_usuario_consulta_os_proprios_dados_sem_a_senha PASSED [ 57%]
+tests/system/test_permissoes.py::test_consulta_dos_proprios_dados_sem_token PASSED [ 57%]
+tests/system/test_permissoes.py::test_aluno_ve_os_proprios_emprestimos PASSED [ 58%]
+tests/system/test_permissoes.py::test_aluno_nao_ve_os_emprestimos_de_outro_usuario PASSED [ 59%]
+tests/system/test_permissoes.py::test_aluno_nao_ve_as_multas_de_outro_usuario PASSED [ 59%]
+tests/system/test_permissoes.py::test_aluno_ve_as_proprias_multas PASSED [ 60%]
+tests/system/test_permissoes.py::test_bibliotecario_ve_os_emprestimos_de_qualquer_usuario PASSED [ 61%]
+tests/system/test_permissoes.py::test_bibliotecario_consulta_usuario_inexistente PASSED [ 61%]
+tests/system/test_permissoes.py::test_bibliotecario_consulta_multas_de_usuario_inexistente PASSED [ 62%]
+tests/system/test_permissoes.py::test_aluno_nao_descobre_se_um_id_existe PASSED [ 63%]
+tests/system/test_permissoes.py::test_emprestimos_de_usuario_sem_token PASSED [ 63%]
+tests/system/test_permissoes.py::test_id_de_usuario_nao_numerico PASSED  [ 64%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[True-True-True-True-None] PASSED [ 65%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[True-True-True-False-exemplar_indisponivel] PASSED [ 65%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[True-True-False-True-limite_atingido] PASSED [ 66%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[True-True-False-False-limite_atingido] PASSED [ 67%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[True-False-True-True-multa_pendente] PASSED [ 68%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[True-False-True-False-multa_pendente] PASSED [ 68%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[True-False-False-True-multa_pendente] PASSED [ 69%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[True-False-False-False-multa_pendente] PASSED [ 70%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[False-True-True-True-conta_inativa] PASSED [ 70%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[False-True-True-False-conta_inativa] PASSED [ 71%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[False-True-False-True-conta_inativa] PASSED [ 72%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[False-True-False-False-conta_inativa] PASSED [ 72%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[False-False-True-True-conta_inativa] PASSED [ 73%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[False-False-True-False-conta_inativa] PASSED [ 74%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[False-False-False-True-conta_inativa] PASSED [ 74%]
+tests/unit/test_emprestimos.py::test_tabela_de_decisao_do_emprestimo[False-False-False-False-conta_inativa] PASSED [ 75%]
+tests/unit/test_emprestimos.py::test_limite_de_emprestimos_por_perfil[aluno-0-None] PASSED [ 76%]
+tests/unit/test_emprestimos.py::test_limite_de_emprestimos_por_perfil[aluno-2-None] PASSED [ 76%]
+tests/unit/test_emprestimos.py::test_limite_de_emprestimos_por_perfil[aluno-3-limite_atingido] PASSED [ 77%]
+tests/unit/test_emprestimos.py::test_limite_de_emprestimos_por_perfil[aluno-4-limite_atingido] PASSED [ 78%]
+tests/unit/test_emprestimos.py::test_limite_de_emprestimos_por_perfil[professor-3-None] PASSED [ 78%]
+tests/unit/test_emprestimos.py::test_limite_de_emprestimos_por_perfil[professor-4-None] PASSED [ 79%]
+tests/unit/test_emprestimos.py::test_limite_de_emprestimos_por_perfil[professor-5-limite_atingido] PASSED [ 80%]
+tests/unit/test_emprestimos.py::test_limite_de_emprestimos_por_perfil[professor-6-limite_atingido] PASSED [ 80%]
+tests/unit/test_emprestimos.py::test_bibliotecario_nao_pode_emprestar PASSED [ 81%]
+tests/unit/test_emprestimos.py::test_data_prevista_de_devolucao[aluno-data_emprestimo0-data_esperada0] PASSED [ 82%]
+tests/unit/test_emprestimos.py::test_data_prevista_de_devolucao[professor-data_emprestimo1-data_esperada1] PASSED [ 82%]
+tests/unit/test_emprestimos.py::test_data_prevista_de_devolucao[aluno-data_emprestimo2-data_esperada2] PASSED [ 83%]
+tests/unit/test_emprestimos.py::test_data_prevista_de_devolucao[professor-data_emprestimo3-data_esperada3] PASSED [ 84%]
+tests/unit/test_emprestimos.py::test_data_prevista_recusa_perfil_sem_prazo PASSED [ 85%]
+tests/unit/test_multas.py::test_dias_atraso[data_devolucao0-0] PASSED    [ 85%]
+tests/unit/test_multas.py::test_dias_atraso[data_devolucao1-0] PASSED    [ 86%]
+tests/unit/test_multas.py::test_dias_atraso[data_devolucao2-1] PASSED    [ 87%]
+tests/unit/test_multas.py::test_dias_atraso[data_devolucao3-30] PASSED   [ 87%]
+tests/unit/test_multas.py::test_valor_da_multa[0-multa_esperada0] PASSED [ 88%]
+tests/unit/test_multas.py::test_valor_da_multa[1-multa_esperada1] PASSED [ 89%]
+tests/unit/test_multas.py::test_valor_da_multa[15-multa_esperada2] PASSED [ 89%]
+tests/unit/test_multas.py::test_valor_da_multa[29-multa_esperada3] PASSED [ 90%]
+tests/unit/test_multas.py::test_valor_da_multa[30-multa_esperada4] PASSED [ 91%]
+tests/unit/test_multas.py::test_valor_da_multa[31-multa_esperada5] PASSED [ 91%]
+tests/unit/test_multas.py::test_valor_da_multa[365-multa_esperada6] PASSED [ 92%]
+tests/unit/test_multas.py::test_multa_recusa_dias_negativos PASSED       [ 93%]
+tests/unit/test_seguranca.py::test_hash_nao_contem_a_senha PASSED        [ 93%]
+tests/unit/test_seguranca.py::test_senha_correta_e_aceita PASSED         [ 94%]
+tests/unit/test_seguranca.py::test_senha_incorreta_e_recusada PASSED     [ 95%]
+tests/unit/test_seguranca.py::test_mesma_senha_gera_hashes_diferentes PASSED [ 95%]
+tests/unit/test_seguranca.py::test_hash_malformado_e_recusado PASSED     [ 96%]
+tests/unit/test_seguranca.py::test_token_valido_devolve_o_id_do_usuario PASSED [ 97%]
+tests/unit/test_seguranca.py::test_token_expirado_e_recusado PASSED      [ 97%]
+tests/unit/test_seguranca.py::test_token_adulterado_e_recusado PASSED    [ 98%]
+tests/unit/test_seguranca.py::test_token_assinado_com_outra_chave_e_recusado PASSED [ 99%]
+tests/unit/test_seguranca.py::test_texto_qualquer_nao_e_token PASSED     [100%]
+
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.11.9-final-0 _______________
+
+Name                          Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------
+app\__init__.py                   0      0      0      0   100%
+app\api\__init__.py               0      0      0      0   100%
+app\api\acervo.py                10      0      0      0   100%
+app\api\auth.py                  13      0      2      0   100%
+app\api\cabecalhos.py             9      0      2      0   100%
+app\api\dependencias.py          43      3     10      0    94%   36-37, 42
+app\api\emprestimos.py           20      0      0      0   100%
+app\api\erros.py                 10      0      0      0   100%
+app\api\multas.py                12      0      0      0   100%
+app\api\usuarios.py               8      0      0      0   100%
+app\config.py                    10      0      0      0   100%
+app\dados_iniciais.py            22      0      4      0   100%
+app\database.py                  12      0      0      0   100%
+app\enums.py                      8      0      0      0   100%
+app\excecoes.py                   9      0      0      0   100%
+app\main.py                      24      4      0      0    83%   17-20
+app\models\__init__.py            5      0      0      0   100%
+app\models\acervo.py             16      0      0      0   100%
+app\models\emprestimos.py        20      0      0      0   100%
+app\models\multas.py             18      0      0      0   100%
+app\models\usuarios.py           12      0      0      0   100%
+app\regras\__init__.py            0      0      0      0   100%
+app\regras\emprestimos.py        26      0     12      0   100%
+app\regras\multas.py             11      0      2      0   100%
+app\relogio.py                    3      1      0      0    67%   13
+app\schemas\__init__.py           0      0      0      0   100%
+app\schemas\acervo.py            12      0      0      0   100%
+app\schemas\auth.py               7      0      0      0   100%
+app\schemas\emprestimos.py       28      0      0      0   100%
+app\schemas\usuarios.py           9      0      0      0   100%
+app\seguranca.py                 32      0      0      0   100%
+app\services\__init__.py          0      0      0      0   100%
+app\services\acervo.py           11      0      2      0   100%
+app\services\emprestimos.py      63      0     16      0   100%
+app\services\multas.py           21      0      6      0   100%
+app\services\usuarios.py         13      0      4      0   100%
+-------------------------------------------------------------------------
+TOTAL                           517      8     60      0    99%
+======================= 147 passed, 1 warning in 22.95s =======================

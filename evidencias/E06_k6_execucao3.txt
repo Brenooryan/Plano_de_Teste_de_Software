@@ -1,0 +1,77 @@
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+
+     execution: local
+        script: perf\carga.js
+        output: -
+
+     scenarios: (100.00%) 3 scenarios, 60 max VUs, 13m20s max duration (incl. graceful stop):
+              * leitura: 50 looping VUs for 2m0s (exec: consultarAcervo, gracefulStop: 30s)
+              * login: 10 looping VUs for 30s (exec: fazerLogin, startTime: 2m10s, gracefulStop: 30s)
+              * concorrencia: 1 iterations for each of 20 VUs (maxDuration: 10m0s, exec: emprestarMesmoExemplar, startTime: 2m50s, gracefulStop: 30s)
+
+INFO[0000] Exemplar disputado no cenário de concorrência: 7  source=console
+INFO[0170] VERIFICACAO RNF05: emprestimos ativos do exemplar 7 = 1 (esperado: 1)  source=console
+INFO[0170] VERIFICACAO RF15: emprestimos ativos do aluno = 1 (limite: 3)  source=console
+
+
+  █ THRESHOLDS
+
+    emprestimos_aceitos
+    ✓ 'count==1' count=1
+
+    erros_consulta
+    ✓ 'rate<0.01' rate=0.00%
+
+    respostas_inesperadas
+    ✓ 'count==0' count=0
+
+    tempo_consulta
+    ✓ 'p(95)<500' p(95)=14.67ms
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......: 9340    54.808201/s
+    checks_succeeded...: 100.00% 9340 out of 9340
+    checks_failed......: 0.00%   0 out of 9340
+
+    ✓ consulta respondeu 200
+    ✓ login respondeu 200
+
+    CUSTOM
+    emprestimos_aceitos............: 1      0.005868/s
+    emprestimos_recusados..........: 19     0.111494/s
+    erros_consulta.................: 0.00%  0 out of 6000
+    erros_login....................: 0.00%  0 out of 3340
+    respostas_inesperadas..........: 0      0/s
+    tempo_consulta.................: avg=5.66ms   min=509.8µs med=3.4ms   max=121.24ms p(90)=10.93ms p(95)=14.67ms
+    tempo_login....................: avg=89.88ms  min=70.14ms med=89.11ms max=126.7ms  p(90)=99.93ms p(95)=102.35ms
+
+    HTTP
+    http_req_duration..............: avg=35.94ms  min=509.8µs med=6.48ms  max=243.02ms p(90)=94.02ms p(95)=98.68ms
+      { expected_response:true }...: avg=35.94ms  min=509.8µs med=6.48ms  max=243.02ms p(90)=94.02ms p(95)=98.68ms
+    http_req_failed................: 0.00%  0 out of 9365
+    http_reqs......................: 9365   54.954904/s
+
+    EXECUTION
+    iteration_duration.............: avg=677.22ms min=46.78ms med=1s      max=1.12s    p(90)=1s      p(95)=1.01s
+    iterations.....................: 9360   54.925564/s
+    vus............................: 0      min=0         max=50
+    vus_max........................: 60     min=60        max=60
+
+    NETWORK
+    data_received..................: 7.1 MB 42 kB/s
+    data_sent......................: 2.1 MB 13 kB/s
+
+
+
+
+running (02m50.4s), 00/60 VUs, 9360 complete and 0 interrupted iterations
+leitura      ✓ [======================================] 50 VUs  2m0s
+login        ✓ [======================================] 10 VUs  30s
+concorrencia ✓ [======================================] 20 VUs  00m00.2s/10m0s  20/20 iters, 1 per VU

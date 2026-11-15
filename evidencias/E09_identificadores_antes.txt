@@ -1,0 +1,880 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.7.0 -- C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software
+configfile: pytest.ini
+plugins: anyio-4.16.0, cov-7.1.0
+collected 15 items
+
+tests/system/test_identificadores.py::test_id_no_caminho_no_limite_superior_e_valido[GET-/usuarios/{id}/emprestimos] PASSED [  6%]
+tests/system/test_identificadores.py::test_id_no_caminho_no_limite_superior_e_valido[GET-/usuarios/{id}/multas] PASSED [ 13%]
+tests/system/test_identificadores.py::test_id_no_caminho_no_limite_superior_e_valido[POST-/multas/{id}/pagamento] PASSED [ 20%]
+tests/system/test_identificadores.py::test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[GET-/usuarios/{id}/emprestimos] FAILED [ 26%]
+tests/system/test_identificadores.py::test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[GET-/usuarios/{id}/multas] FAILED [ 33%]
+tests/system/test_identificadores.py::test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[POST-/multas/{id}/pagamento] FAILED [ 40%]
+tests/system/test_identificadores.py::test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[GET-/usuarios/{id}/emprestimos] FAILED [ 46%]
+tests/system/test_identificadores.py::test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[GET-/usuarios/{id}/multas] FAILED [ 53%]
+tests/system/test_identificadores.py::test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[POST-/multas/{id}/pagamento] FAILED [ 60%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_na_devolucao[9223372036854775807-404] PASSED      [ 66%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_na_devolucao[9223372036854775808-422] FAILED      [ 73%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_na_devolucao[0-422] FAILED                        [ 80%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_no_emprestimo[9223372036854775807-404] PASSED     [ 86%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_no_emprestimo[9223372036854775808-422] FAILED     [ 93%]
+tests/system/test_identificadores.py::test_limites_do_exemplar_no_emprestimo[0-422] FAILED                       [100%]
+
+====================================================== FAILURES =======================================================
+_____________ test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[GET-/usuarios/{id}/emprestimos] _____________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C835D5350>
+cabecalho_bibliotecario = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzk0NzY1NTE0fQ.EwDy-DzvSi-odqnElSC1muRExiDoMcj-NtVfvND2yJc'}
+metodo = 'GET', rota = '/usuarios/{id}/emprestimos'
+
+    @pytest.mark.parametrize(("metodo", "rota"), ROTAS_COM_ID_NO_CAMINHO)
+    def test_id_no_caminho_acima_do_limite_superior_e_dado_invalido(
+        cliente, cabecalho_bibliotecario, metodo, rota
+    ):
+>       resposta = cliente.request(
+            metodo, rota.format(id=MAIOR_ID + 1), headers=cabecalho_bibliotecario
+        )
+
+tests\system\test_identificadores.py:39:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\starlette\testclient.py:518: in request
+    return super().request(
+.venv\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_client.py:928: in send
+    raise exc
+.venv\Lib\site-packages\httpx\_client.py:922: in send
+    response.read()
+.venv\Lib\site-packages\httpx\_models.py:881: in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_models.py:897: in iter_bytes
+    for raw_bytes in self.iter_raw():
+.venv\Lib\site-packages\httpx\_models.py:951: in iter_raw
+    for raw_stream_bytes in self.stream:
+.venv\Lib\site-packages\httpx\_client.py:153: in __iter__
+    for chunk in self._stream:
+.venv\Lib\site-packages\starlette\testclient.py:384: in iter_body
+    exit_stack.close()
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:609: in close
+    self.__exit__(None, None, None)
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:601: in __exit__
+    raise exc_details[1]
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:586: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:399: in close_app
+    raise exception
+.venv\Lib\site-packages\anyio\from_thread.py:272: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:366: in run_app
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\applications.py:1159: in __call__
+    await super().__call__(scope, receive, send)
+.venv\Lib\site-packages\starlette\applications.py:96: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+.venv\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+.venv\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:683: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:704: in app
+    await route.handle(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:289: in handle
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\routing.py:134: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\routing.py:120: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\fastapi\routing.py:674: in app
+    raw_response = await run_endpoint_function(
+.venv\Lib\site-packages\fastapi\routing.py:330: in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\concurrency.py:34: in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\to_thread.py:65: in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:2779: in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1124: in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\emprestimos.py:67: in listar_emprestimos
+    emprestimos = listar_emprestimos_do_usuario(sessao, usuario_id)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\services\emprestimos.py:45: in listar_emprestimos_do_usuario
+    if sessao.get(Usuario, usuario_id) is None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2271: in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:306: in orm_execute_statement
+    result = conn.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2368: in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x0000022C83535190>
+cursor = <sqlite3.Cursor object at 0x0000022C83601340>
+statement = 'SELECT usuarios.id AS usuarios_id, usuarios.nome AS usuarios_nome, usuarios.email AS usuarios_email, usuarios.senha_h...nha_hash, usuarios.perfil AS usuarios_perfil, usuarios.ativo AS usuarios_ativo \nFROM usuarios \nWHERE usuarios.id = ?'
+parameters = (9223372036854775808,)
+context = <sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext object at 0x0000022C836082D0>
+
+    def do_execute(self, cursor, statement, parameters, context=None):
+>       cursor.execute(statement, parameters)
+E       OverflowError: Python int too large to convert to SQLite INTEGER
+
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:952: OverflowError
+_______________ test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[GET-/usuarios/{id}/multas] ________________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C85FAA410>
+cabecalho_bibliotecario = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzk0NzY1NTE1fQ.VnJqc3I8UEhCI6GUV4TdUJq-rBaIUcLVSPQq2MT6nGE'}
+metodo = 'GET', rota = '/usuarios/{id}/multas'
+
+    @pytest.mark.parametrize(("metodo", "rota"), ROTAS_COM_ID_NO_CAMINHO)
+    def test_id_no_caminho_acima_do_limite_superior_e_dado_invalido(
+        cliente, cabecalho_bibliotecario, metodo, rota
+    ):
+>       resposta = cliente.request(
+            metodo, rota.format(id=MAIOR_ID + 1), headers=cabecalho_bibliotecario
+        )
+
+tests\system\test_identificadores.py:39:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\starlette\testclient.py:518: in request
+    return super().request(
+.venv\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_client.py:928: in send
+    raise exc
+.venv\Lib\site-packages\httpx\_client.py:922: in send
+    response.read()
+.venv\Lib\site-packages\httpx\_models.py:881: in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_models.py:897: in iter_bytes
+    for raw_bytes in self.iter_raw():
+.venv\Lib\site-packages\httpx\_models.py:951: in iter_raw
+    for raw_stream_bytes in self.stream:
+.venv\Lib\site-packages\httpx\_client.py:153: in __iter__
+    for chunk in self._stream:
+.venv\Lib\site-packages\starlette\testclient.py:384: in iter_body
+    exit_stack.close()
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:609: in close
+    self.__exit__(None, None, None)
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:601: in __exit__
+    raise exc_details[1]
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:586: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:399: in close_app
+    raise exception
+.venv\Lib\site-packages\anyio\from_thread.py:272: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:366: in run_app
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\applications.py:1159: in __call__
+    await super().__call__(scope, receive, send)
+.venv\Lib\site-packages\starlette\applications.py:96: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+.venv\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+.venv\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:683: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:704: in app
+    await route.handle(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:289: in handle
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\routing.py:134: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\routing.py:120: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\fastapi\routing.py:674: in app
+    raw_response = await run_endpoint_function(
+.venv\Lib\site-packages\fastapi\routing.py:330: in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\concurrency.py:34: in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\to_thread.py:65: in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:2779: in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1124: in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\multas.py:24: in listar_multas
+    return [MultaSaida.model_validate(m) for m in listar_multas_do_usuario(sessao, usuario_id)]
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\services\multas.py:21: in listar_multas_do_usuario
+    if sessao.get(Usuario, usuario_id) is None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2271: in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:306: in orm_execute_statement
+    result = conn.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2368: in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x0000022C85F5DA10>
+cursor = <sqlite3.Cursor object at 0x0000022C863B9340>
+statement = 'SELECT usuarios.id AS usuarios_id, usuarios.nome AS usuarios_nome, usuarios.email AS usuarios_email, usuarios.senha_h...nha_hash, usuarios.perfil AS usuarios_perfil, usuarios.ativo AS usuarios_ativo \nFROM usuarios \nWHERE usuarios.id = ?'
+parameters = (9223372036854775808,)
+context = <sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext object at 0x0000022C85547B50>
+
+    def do_execute(self, cursor, statement, parameters, context=None):
+>       cursor.execute(statement, parameters)
+E       OverflowError: Python int too large to convert to SQLite INTEGER
+
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:952: OverflowError
+______________ test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[POST-/multas/{id}/pagamento] _______________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C8558C1D0>
+cabecalho_bibliotecario = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzk0NzY1NTE2fQ.6vWCTNqjsZIqz3VHdQz4HceEgOB0GUL4gU5b9znIst4'}
+metodo = 'POST', rota = '/multas/{id}/pagamento'
+
+    @pytest.mark.parametrize(("metodo", "rota"), ROTAS_COM_ID_NO_CAMINHO)
+    def test_id_no_caminho_acima_do_limite_superior_e_dado_invalido(
+        cliente, cabecalho_bibliotecario, metodo, rota
+    ):
+>       resposta = cliente.request(
+            metodo, rota.format(id=MAIOR_ID + 1), headers=cabecalho_bibliotecario
+        )
+
+tests\system\test_identificadores.py:39:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\starlette\testclient.py:518: in request
+    return super().request(
+.venv\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_client.py:928: in send
+    raise exc
+.venv\Lib\site-packages\httpx\_client.py:922: in send
+    response.read()
+.venv\Lib\site-packages\httpx\_models.py:881: in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_models.py:897: in iter_bytes
+    for raw_bytes in self.iter_raw():
+.venv\Lib\site-packages\httpx\_models.py:951: in iter_raw
+    for raw_stream_bytes in self.stream:
+.venv\Lib\site-packages\httpx\_client.py:153: in __iter__
+    for chunk in self._stream:
+.venv\Lib\site-packages\starlette\testclient.py:384: in iter_body
+    exit_stack.close()
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:609: in close
+    self.__exit__(None, None, None)
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:601: in __exit__
+    raise exc_details[1]
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:586: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:399: in close_app
+    raise exception
+.venv\Lib\site-packages\anyio\from_thread.py:272: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:366: in run_app
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\applications.py:1159: in __call__
+    await super().__call__(scope, receive, send)
+.venv\Lib\site-packages\starlette\applications.py:96: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+.venv\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+.venv\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:683: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:704: in app
+    await route.handle(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:289: in handle
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\routing.py:134: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\routing.py:120: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\fastapi\routing.py:674: in app
+    raw_response = await run_endpoint_function(
+.venv\Lib\site-packages\fastapi\routing.py:330: in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\concurrency.py:34: in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\to_thread.py:65: in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:2779: in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1124: in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\multas.py:34: in registrar_pagamento
+    return MultaSaida.model_validate(pagar_multa(sessao, multa_id))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\services\multas.py:30: in pagar_multa
+    multa = sessao.get(Multa, multa_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2271: in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:306: in orm_execute_statement
+    result = conn.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2368: in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x0000022C7FF6C290>
+cursor = <sqlite3.Cursor object at 0x0000022C86C1D740>
+statement = 'SELECT multas.id AS multas_id, multas.emprestimo_id AS multas_emprestimo_id, multas.usuario_id AS multas_usuario_id, multas.valor_centavos AS multas_valor_centavos, multas.paga AS multas_paga \nFROM multas \nWHERE multas.id = ?'
+parameters = (9223372036854775808,)
+context = <sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext object at 0x0000022C855D4310>
+
+    def do_execute(self, cursor, statement, parameters, context=None):
+>       cursor.execute(statement, parameters)
+E       OverflowError: Python int too large to convert to SQLite INTEGER
+
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:952: OverflowError
+____________ test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[GET-/usuarios/{id}/emprestimos] _____________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C856B9B10>
+cabecalho_bibliotecario = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzk0NzY1NTE3fQ.0hpVb3UyRU-vMD1hSUtmJmbU_VdW8JX_yQbvkFHBJkM'}
+metodo = 'GET', rota = '/usuarios/{id}/emprestimos'
+
+    @pytest.mark.parametrize(("metodo", "rota"), ROTAS_COM_ID_NO_CAMINHO)
+    def test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido(
+        cliente, cabecalho_bibliotecario, metodo, rota
+    ):
+        # Identificadores começam em 1: zero está fora da faixa válida
+        resposta = cliente.request(metodo, rota.format(id=0), headers=cabecalho_bibliotecario)
+
+>       assert resposta.status_code == 422
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\system\test_identificadores.py:53: AssertionError
+_______________ test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[GET-/usuarios/{id}/multas] _______________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C856B9D90>
+cabecalho_bibliotecario = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzk0NzY1NTE3fQ.0hpVb3UyRU-vMD1hSUtmJmbU_VdW8JX_yQbvkFHBJkM'}
+metodo = 'GET', rota = '/usuarios/{id}/multas'
+
+    @pytest.mark.parametrize(("metodo", "rota"), ROTAS_COM_ID_NO_CAMINHO)
+    def test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido(
+        cliente, cabecalho_bibliotecario, metodo, rota
+    ):
+        # Identificadores começam em 1: zero está fora da faixa válida
+        resposta = cliente.request(metodo, rota.format(id=0), headers=cabecalho_bibliotecario)
+
+>       assert resposta.status_code == 422
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\system\test_identificadores.py:53: AssertionError
+______________ test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[POST-/multas/{id}/pagamento] ______________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C85981010>
+cabecalho_bibliotecario = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzk0NzY1NTE4fQ.pXomTGbkgzsioFaPKnZTs9BFNENcCj0AB3_o5pr_XMI'}
+metodo = 'POST', rota = '/multas/{id}/pagamento'
+
+    @pytest.mark.parametrize(("metodo", "rota"), ROTAS_COM_ID_NO_CAMINHO)
+    def test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido(
+        cliente, cabecalho_bibliotecario, metodo, rota
+    ):
+        # Identificadores começam em 1: zero está fora da faixa válida
+        resposta = cliente.request(metodo, rota.format(id=0), headers=cabecalho_bibliotecario)
+
+>       assert resposta.status_code == 422
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\system\test_identificadores.py:53: AssertionError
+___________________________ test_limites_do_exemplar_na_devolucao[9223372036854775808-422] ____________________________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C856BAD90>
+cabecalho_bibliotecario = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzk0NzY1NTE4fQ.pXomTGbkgzsioFaPKnZTs9BFNENcCj0AB3_o5pr_XMI'}
+exemplar_id = 9223372036854775808, status_esperado = 422
+
+    @pytest.mark.parametrize(
+        ("exemplar_id", "status_esperado"),
+        [
+            (MAIOR_ID, 404),      # limite superior: válido, mas não existe
+            (MAIOR_ID + 1, 422),  # um acima do limite superior
+            (0, 422),             # um abaixo do limite inferior
+        ],
+    )
+    def test_limites_do_exemplar_na_devolucao(
+        cliente, cabecalho_bibliotecario, exemplar_id, status_esperado
+    ):
+>       resposta = cliente.post(
+            "/devolucoes", json={"exemplar_id": exemplar_id}, headers=cabecalho_bibliotecario
+        )
+
+tests\system\test_identificadores.py:70:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\httpx\_client.py:1144: in post
+    return self.request(
+.venv\Lib\site-packages\starlette\testclient.py:518: in request
+    return super().request(
+.venv\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_client.py:928: in send
+    raise exc
+.venv\Lib\site-packages\httpx\_client.py:922: in send
+    response.read()
+.venv\Lib\site-packages\httpx\_models.py:881: in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_models.py:897: in iter_bytes
+    for raw_bytes in self.iter_raw():
+.venv\Lib\site-packages\httpx\_models.py:951: in iter_raw
+    for raw_stream_bytes in self.stream:
+.venv\Lib\site-packages\httpx\_client.py:153: in __iter__
+    for chunk in self._stream:
+.venv\Lib\site-packages\starlette\testclient.py:384: in iter_body
+    exit_stack.close()
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:609: in close
+    self.__exit__(None, None, None)
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:601: in __exit__
+    raise exc_details[1]
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:586: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:399: in close_app
+    raise exception
+.venv\Lib\site-packages\anyio\from_thread.py:272: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:366: in run_app
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\applications.py:1159: in __call__
+    await super().__call__(scope, receive, send)
+.venv\Lib\site-packages\starlette\applications.py:96: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+.venv\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+.venv\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:683: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:704: in app
+    await route.handle(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:289: in handle
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\routing.py:134: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\routing.py:120: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\fastapi\routing.py:674: in app
+    raw_response = await run_endpoint_function(
+.venv\Lib\site-packages\fastapi\routing.py:330: in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\concurrency.py:34: in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\to_thread.py:65: in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:2779: in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1124: in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\emprestimos.py:51: in registrar_devolucao
+    emprestimo, multa = devolver(sessao, dados.exemplar_id, hoje)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\services\emprestimos.py:108: in devolver
+    exemplar = sessao.get(Exemplar, exemplar_id)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2271: in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:306: in orm_execute_statement
+    result = conn.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2368: in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x0000022C85E118D0>
+cursor = <sqlite3.Cursor object at 0x0000022C85008440>
+statement = 'SELECT exemplares.id AS exemplares_id, exemplares.livro_id AS exemplares_livro_id, exemplares.estado AS exemplares_estado \nFROM exemplares \nWHERE exemplares.id = ?'
+parameters = (9223372036854775808,)
+context = <sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext object at 0x0000022C835300D0>
+
+    def do_execute(self, cursor, statement, parameters, context=None):
+>       cursor.execute(statement, parameters)
+E       OverflowError: Python int too large to convert to SQLite INTEGER
+
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:952: OverflowError
+____________________________________ test_limites_do_exemplar_na_devolucao[0-422] _____________________________________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C86489610>
+cabecalho_bibliotecario = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzk0NzY1NTE5fQ.zs7Ujss9e480W4ufQD7OpADtIrvJEXWdM4EjJe2XcLw'}
+exemplar_id = 0, status_esperado = 422
+
+    @pytest.mark.parametrize(
+        ("exemplar_id", "status_esperado"),
+        [
+            (MAIOR_ID, 404),      # limite superior: válido, mas não existe
+            (MAIOR_ID + 1, 422),  # um acima do limite superior
+            (0, 422),             # um abaixo do limite inferior
+        ],
+    )
+    def test_limites_do_exemplar_na_devolucao(
+        cliente, cabecalho_bibliotecario, exemplar_id, status_esperado
+    ):
+        resposta = cliente.post(
+            "/devolucoes", json={"exemplar_id": exemplar_id}, headers=cabecalho_bibliotecario
+        )
+
+>       assert resposta.status_code == status_esperado
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\system\test_identificadores.py:74: AssertionError
+___________________________ test_limites_do_exemplar_no_emprestimo[9223372036854775808-422] ___________________________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C83C58190>
+cabecalho_aluno = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzk0NzY1NTE5fQ.UyOKfBtAfnnECzehf-136pUkyxh8rMSVRROFVJChV3s'}
+exemplar_id = 9223372036854775808, status_esperado = 422
+
+    @pytest.mark.parametrize(
+        ("exemplar_id", "status_esperado"),
+        [
+            (MAIOR_ID, 404),
+            (MAIOR_ID + 1, 422),
+            (0, 422),
+        ],
+    )
+    def test_limites_do_exemplar_no_emprestimo(
+        cliente, cabecalho_aluno, exemplar_id, status_esperado
+    ):
+>       resposta = cliente.post(
+            "/emprestimos", json={"exemplar_id": exemplar_id}, headers=cabecalho_aluno
+        )
+
+tests\system\test_identificadores.py:88:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\httpx\_client.py:1144: in post
+    return self.request(
+.venv\Lib\site-packages\starlette\testclient.py:518: in request
+    return super().request(
+.venv\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_client.py:928: in send
+    raise exc
+.venv\Lib\site-packages\httpx\_client.py:922: in send
+    response.read()
+.venv\Lib\site-packages\httpx\_models.py:881: in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_models.py:897: in iter_bytes
+    for raw_bytes in self.iter_raw():
+.venv\Lib\site-packages\httpx\_models.py:951: in iter_raw
+    for raw_stream_bytes in self.stream:
+.venv\Lib\site-packages\httpx\_client.py:153: in __iter__
+    for chunk in self._stream:
+.venv\Lib\site-packages\starlette\testclient.py:384: in iter_body
+    exit_stack.close()
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:609: in close
+    self.__exit__(None, None, None)
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:601: in __exit__
+    raise exc_details[1]
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py:586: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:399: in close_app
+    raise exception
+.venv\Lib\site-packages\anyio\from_thread.py:272: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\testclient.py:366: in run_app
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\applications.py:1159: in __call__
+    await super().__call__(scope, receive, send)
+.venv\Lib\site-packages\starlette\applications.py:96: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+.venv\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+.venv\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:683: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:704: in app
+    await route.handle(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:289: in handle
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\routing.py:134: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\fastapi\routing.py:120: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\fastapi\routing.py:674: in app
+    raw_response = await run_endpoint_function(
+.venv\Lib\site-packages\fastapi\routing.py:330: in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\concurrency.py:34: in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\to_thread.py:65: in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:2779: in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1124: in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+app\api\emprestimos.py:36: in criar_emprestimo
+    emprestimo = emprestar(sessao, usuario.id, dados.exemplar_id, hoje)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\services\emprestimos.py:60: in emprestar
+    emprestimo = _registrar_emprestimo(sessao, usuario_id, exemplar_id, hoje)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\services\emprestimos.py:79: in _registrar_emprestimo
+    exemplar = sessao.get(Exemplar, exemplar_id, populate_existing=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2271: in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:306: in orm_execute_statement
+    result = conn.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2368: in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x0000022C83C59CD0>
+cursor = <sqlite3.Cursor object at 0x0000022C852931C0>
+statement = 'SELECT exemplares.id AS exemplares_id, exemplares.livro_id AS exemplares_livro_id, exemplares.estado AS exemplares_estado \nFROM exemplares \nWHERE exemplares.id = ?'
+parameters = (9223372036854775808,)
+context = <sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext object at 0x0000022C86212910>
+
+    def do_execute(self, cursor, statement, parameters, context=None):
+>       cursor.execute(statement, parameters)
+E       OverflowError: Python int too large to convert to SQLite INTEGER
+
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:952: OverflowError
+____________________________________ test_limites_do_exemplar_no_emprestimo[0-422] ____________________________________
+
+cliente = <starlette.testclient.TestClient object at 0x0000022C855378D0>
+cabecalho_aluno = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzk0NzY1NTIwfQ.tA65CsDYB6Vp6gHR27aePFuASks5s-8gA4LYHC8Mma0'}
+exemplar_id = 0, status_esperado = 422
+
+    @pytest.mark.parametrize(
+        ("exemplar_id", "status_esperado"),
+        [
+            (MAIOR_ID, 404),
+            (MAIOR_ID + 1, 422),
+            (0, 422),
+        ],
+    )
+    def test_limites_do_exemplar_no_emprestimo(
+        cliente, cabecalho_aluno, exemplar_id, status_esperado
+    ):
+        resposta = cliente.post(
+            "/emprestimos", json={"exemplar_id": exemplar_id}, headers=cabecalho_aluno
+        )
+
+>       assert resposta.status_code == status_esperado
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\system\test_identificadores.py:92: AssertionError
+================================================== warnings summary ===================================================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================================== short test summary info ===============================================
+FAILED tests/system/test_identificadores.py::test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[GET-/usuarios/{id}/emprestimos] - OverflowError: Python int too large to convert to SQLite INTEGER
+FAILED tests/system/test_identificadores.py::test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[GET-/usuarios/{id}/multas] - OverflowError: Python int too large to convert to SQLite INTEGER
+FAILED tests/system/test_identificadores.py::test_id_no_caminho_acima_do_limite_superior_e_dado_invalido[POST-/multas/{id}/pagamento] - OverflowError: Python int too large to convert to SQLite INTEGER
+FAILED tests/system/test_identificadores.py::test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[GET-/usuarios/{id}/emprestimos] - assert 404 == 422
+FAILED tests/system/test_identificadores.py::test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[GET-/usuarios/{id}/multas] - assert 404 == 422
+FAILED tests/system/test_identificadores.py::test_id_no_caminho_abaixo_do_limite_inferior_e_dado_invalido[POST-/multas/{id}/pagamento] - assert 404 == 422
+FAILED tests/system/test_identificadores.py::test_limites_do_exemplar_na_devolucao[9223372036854775808-422] - OverflowError: Python int too large to convert to SQLite INTEGER
+FAILED tests/system/test_identificadores.py::test_limites_do_exemplar_na_devolucao[0-422] - assert 404 == 422
+FAILED tests/system/test_identificadores.py::test_limites_do_exemplar_no_emprestimo[9223372036854775808-422] - OverflowError: Python int too large to convert to SQLite INTEGER
+FAILED tests/system/test_identificadores.py::test_limites_do_exemplar_no_emprestimo[0-422] - assert 404 == 422
+======================================= 10 failed, 5 passed, 1 warning in 7.37s =======================================

@@ -1,0 +1,663 @@
+INFO:     Started server process [2253]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:37206 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37212 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38484 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "GET /usuarios/eu HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38484 - "GET /livros HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:38484 - "GET /usuarios/10/emprestimos HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /usuarios/10/multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /multas/10/pagamento HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38484 - "GET /7897025068719624901 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /auth/1495005662155680795 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /multas/2910105582797417525 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /multas/10/3403760436104600107 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /usuarios/185236856503037675 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /usuarios/10/4742962268727561760 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "POST /latest/meta-data/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /latest/meta-data/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /computeMetadata/v1/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53948 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /computeMetadata/v1/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53948 - "POST /opc/v1/instance/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /opc/v1/instance/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /opc/v2/instance/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "POST /opc/v2/instance/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "POST /latest/meta-data/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /latest/meta-data/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /metadata/instance HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /metadata/v1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /openstack/latest/meta_data.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53922 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53922 - "POST /devolucoes/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53924 - "POST /emprestimos/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53936 - "POST /auth/login/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:38484 - "POST /multas/10/pagamento/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53924 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53958 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53958 - "GET /auth/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53966 - "GET /livros/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53978 - "GET /health/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53922 - "POST /devolucoes HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:53922 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53958 - "GET /multas/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53978 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53978 - "GET /multas/10/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /openapi.json/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:38484 - "POST /multas/10/pagamento HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /livros HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53924 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53924 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /usuarios/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /usuarios/10/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /usuarios/10/emprestimos/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53924 - "GET /usuarios/eu/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53948 - "GET /usuarios/10/multas/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53948 - "GET /usuarios/eu HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53924 - "GET /usuarios/10/multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /usuarios/10/emprestimos HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53948 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53948 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53948 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53948 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53948 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53948 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "POST /devolucoes HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:38484 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53924 - "GET /auth/actuator/health HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /auth/actuator/health HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38484 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:38484 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53924 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53924 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38484 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53924 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /devolucoes HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53936 - "POST /emprestimos HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53948 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /usuarios/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /auth HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /multas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /multas/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /usuarios HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53948 - "GET /usuarios/10 HTTP/1.1" 404 Not Found

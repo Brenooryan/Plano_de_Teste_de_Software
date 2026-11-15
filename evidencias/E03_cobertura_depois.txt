@@ -1,0 +1,71 @@
+======================================================= test session starts ========================================================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.7.0
+rootdir: C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.16.0, cov-7.1.0
+collected 126 items
+
+tests\integration\test_dados_iniciais.py .                                                                                    [  0%]
+tests\integration\test_emprestimos.py ...........                                                                             [  9%]
+tests\integration\test_models.py .........                                                                                    [ 16%]
+tests\integration\test_multas.py .........                                                                                    [ 23%]
+tests\system\test_acervo.py ..                                                                                                [ 25%]
+tests\system\test_auth.py .........                                                                                           [ 32%]
+tests\system\test_emprestimos.py .............                                                                                [ 42%]
+tests\system\test_health.py .                                                                                                 [ 43%]
+tests\system\test_multas.py .......                                                                                           [ 49%]
+tests\system\test_permissoes.py ............                                                                                  [ 58%]
+tests\unit\test_emprestimos.py ..............................                                                                 [ 82%]
+tests\unit\test_multas.py ............                                                                                        [ 92%]
+tests\unit\test_seguranca.py ..........                                                                                       [100%]
+
+========================================================= warnings summary =========================================================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+========================================================== tests coverage ==========================================================
+_________________________________________ coverage: platform win32, python 3.11.9-final-0 __________________________________________
+
+Name                          Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------
+app\__init__.py                   0      0      0      0   100%
+app\api\__init__.py               0      0      0      0   100%
+app\api\acervo.py                10      0      0      0   100%
+app\api\auth.py                  13      0      2      0   100%
+app\api\dependencias.py          40      3     10      0    94%   30-31, 36
+app\api\emprestimos.py           20      0      0      0   100%
+app\api\erros.py                 10      0      0      0   100%
+app\api\multas.py                12      0      0      0   100%
+app\api\usuarios.py               8      0      0      0   100%
+app\config.py                     9      0      0      0   100%
+app\dados_iniciais.py            22      0      4      0   100%
+app\database.py                  12      0      0      0   100%
+app\enums.py                      8      0      0      0   100%
+app\excecoes.py                   9      0      0      0   100%
+app\main.py                      22      4      0      0    82%   16-19
+app\models\__init__.py            5      0      0      0   100%
+app\models\acervo.py             16      0      0      0   100%
+app\models\emprestimos.py        20      0      0      0   100%
+app\models\multas.py             18      0      0      0   100%
+app\models\usuarios.py           12      0      0      0   100%
+app\regras\__init__.py            0      0      0      0   100%
+app\regras\emprestimos.py        26      0     12      0   100%
+app\regras\multas.py             11      0      2      0   100%
+app\relogio.py                    3      1      0      0    67%   13
+app\schemas\__init__.py           0      0      0      0   100%
+app\schemas\acervo.py            12      0      0      0   100%
+app\schemas\auth.py               7      0      0      0   100%
+app\schemas\emprestimos.py       25      0      0      0   100%
+app\schemas\usuarios.py           9      0      0      0   100%
+app\seguranca.py                 32      0      0      0   100%
+app\services\__init__.py          0      0      0      0   100%
+app\services\acervo.py           11      0      2      0   100%
+app\services\emprestimos.py      55      0     16      0   100%
+app\services\multas.py           21      0      6      0   100%
+app\services\usuarios.py         13      0      4      0   100%
+-------------------------------------------------------------------------
+TOTAL                           491      8     58      0    99%
+================================================= 126 passed, 1 warning in 16.22s ==================================================

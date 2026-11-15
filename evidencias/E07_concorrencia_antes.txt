@@ -1,0 +1,186 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.7.0 -- C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Breno\Documents\GitHub\Plano_de_Teste_de_Software
+configfile: pytest.ini
+plugins: anyio-4.16.0, cov-7.1.0
+collected 3 items
+
+tests/integration/test_concorrencia.py::test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[1] FAILED [ 33%]
+tests/integration/test_concorrencia.py::test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[2] FAILED [ 66%]
+tests/integration/test_concorrencia.py::test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[3] FAILED [100%]
+
+====================================================== FAILURES =======================================================
+______________________ test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[1] ______________________
+
+fabrica_de_sessoes = sessionmaker(class_='Session', bind=Engine(sqlite:///C:/Users/Breno/AppData/Local/Temp/pytest-of-Breno/pytest-1/test_pedidos_simultaneos_pelo_0/concorrencia.db), autoflush=True, expire_on_commit=True)
+rodada = 1
+
+    @pytest.mark.parametrize("rodada", [1, 2, 3])
+    def test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo(
+        fabrica_de_sessoes, rodada
+    ):
+        # Arrange: um aluno e um exemplar disponível
+        with fabrica_de_sessoes() as sessao:
+            aluno = Usuario(
+                nome="Ana Aluna",
+                email="ana@exemplo.com",
+                senha_hash="hash-de-teste",
+                perfil=Perfil.ALUNO,
+            )
+            livro = Livro(titulo="Dom Casmurro", autor="Machado de Assis", isbn="9788535902778")
+            exemplar = Exemplar(livro=livro)
+            sessao.add_all([aluno, exemplar])
+            sessao.commit()
+            aluno_id, exemplar_id = aluno.id, exemplar.id
+
+        largada = threading.Barrier(PEDIDOS_SIMULTANEOS, timeout=30)
+        resultados: list[str] = []
+
+        def pedir_emprestimo() -> None:
+            try:
+                with fabrica_de_sessoes() as sessao:
+                    sessao.execute(text("SELECT 1"))  # abre a conexão antes da largada
+                    largada.wait()  # todas as threads partem juntas
+                    emprestar(sessao, aluno_id, exemplar_id, HOJE)
+                resultados.append("aceito")
+            except RegraDeNegocioError as erro:
+                resultados.append(erro.codigo)
+            except Exception as erro:  # qualquer outra falha reprova o teste
+                resultados.append(f"erro inesperado: {erro!r}")
+
+        # Act: 20 pedidos ao mesmo tempo
+        threads = [threading.Thread(target=pedir_emprestimo) for _ in range(PEDIDOS_SIMULTANEOS)]
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join()
+
+        # Assert: um aceito, os demais recusados, e um único empréstimo gravado
+        with fabrica_de_sessoes() as sessao:
+            ativos_no_banco = contar_emprestimos_ativos(sessao, aluno_id)
+
+>       assert resultados.count("aceito") == 1, resultados
+E       AssertionError: ['aceito', 'aceito', 'aceito', 'limite_atingido', 'aceito', 'limite_atingido', ...]
+E       assert 13 == 1
+E        +  where 13 = <built-in method count of list object at 0x000002C3640A2E80>('aceito')
+E        +    where <built-in method count of list object at 0x000002C3640A2E80> = ['aceito', 'aceito', 'aceito', 'limite_atingido', 'aceito', 'limite_atingido', ...].count
+
+tests\integration\test_concorrencia.py:92: AssertionError
+______________________ test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[2] ______________________
+
+fabrica_de_sessoes = sessionmaker(class_='Session', bind=Engine(sqlite:///C:/Users/Breno/AppData/Local/Temp/pytest-of-Breno/pytest-1/test_pedidos_simultaneos_pelo_1/concorrencia.db), autoflush=True, expire_on_commit=True)
+rodada = 2
+
+    @pytest.mark.parametrize("rodada", [1, 2, 3])
+    def test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo(
+        fabrica_de_sessoes, rodada
+    ):
+        # Arrange: um aluno e um exemplar disponível
+        with fabrica_de_sessoes() as sessao:
+            aluno = Usuario(
+                nome="Ana Aluna",
+                email="ana@exemplo.com",
+                senha_hash="hash-de-teste",
+                perfil=Perfil.ALUNO,
+            )
+            livro = Livro(titulo="Dom Casmurro", autor="Machado de Assis", isbn="9788535902778")
+            exemplar = Exemplar(livro=livro)
+            sessao.add_all([aluno, exemplar])
+            sessao.commit()
+            aluno_id, exemplar_id = aluno.id, exemplar.id
+
+        largada = threading.Barrier(PEDIDOS_SIMULTANEOS, timeout=30)
+        resultados: list[str] = []
+
+        def pedir_emprestimo() -> None:
+            try:
+                with fabrica_de_sessoes() as sessao:
+                    sessao.execute(text("SELECT 1"))  # abre a conexão antes da largada
+                    largada.wait()  # todas as threads partem juntas
+                    emprestar(sessao, aluno_id, exemplar_id, HOJE)
+                resultados.append("aceito")
+            except RegraDeNegocioError as erro:
+                resultados.append(erro.codigo)
+            except Exception as erro:  # qualquer outra falha reprova o teste
+                resultados.append(f"erro inesperado: {erro!r}")
+
+        # Act: 20 pedidos ao mesmo tempo
+        threads = [threading.Thread(target=pedir_emprestimo) for _ in range(PEDIDOS_SIMULTANEOS)]
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join()
+
+        # Assert: um aceito, os demais recusados, e um único empréstimo gravado
+        with fabrica_de_sessoes() as sessao:
+            ativos_no_banco = contar_emprestimos_ativos(sessao, aluno_id)
+
+>       assert resultados.count("aceito") == 1, resultados
+E       AssertionError: ['aceito', 'aceito', 'aceito', 'limite_atingido', 'limite_atingido', 'aceito', ...]
+E       assert 11 == 1
+E        +  where 11 = <built-in method count of list object at 0x000002C3641AC600>('aceito')
+E        +    where <built-in method count of list object at 0x000002C3641AC600> = ['aceito', 'aceito', 'aceito', 'limite_atingido', 'limite_atingido', 'aceito', ...].count
+
+tests\integration\test_concorrencia.py:92: AssertionError
+______________________ test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[3] ______________________
+
+fabrica_de_sessoes = sessionmaker(class_='Session', bind=Engine(sqlite:///C:/Users/Breno/AppData/Local/Temp/pytest-of-Breno/pytest-1/test_pedidos_simultaneos_pelo_2/concorrencia.db), autoflush=True, expire_on_commit=True)
+rodada = 3
+
+    @pytest.mark.parametrize("rodada", [1, 2, 3])
+    def test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo(
+        fabrica_de_sessoes, rodada
+    ):
+        # Arrange: um aluno e um exemplar disponível
+        with fabrica_de_sessoes() as sessao:
+            aluno = Usuario(
+                nome="Ana Aluna",
+                email="ana@exemplo.com",
+                senha_hash="hash-de-teste",
+                perfil=Perfil.ALUNO,
+            )
+            livro = Livro(titulo="Dom Casmurro", autor="Machado de Assis", isbn="9788535902778")
+            exemplar = Exemplar(livro=livro)
+            sessao.add_all([aluno, exemplar])
+            sessao.commit()
+            aluno_id, exemplar_id = aluno.id, exemplar.id
+
+        largada = threading.Barrier(PEDIDOS_SIMULTANEOS, timeout=30)
+        resultados: list[str] = []
+
+        def pedir_emprestimo() -> None:
+            try:
+                with fabrica_de_sessoes() as sessao:
+                    sessao.execute(text("SELECT 1"))  # abre a conexão antes da largada
+                    largada.wait()  # todas as threads partem juntas
+                    emprestar(sessao, aluno_id, exemplar_id, HOJE)
+                resultados.append("aceito")
+            except RegraDeNegocioError as erro:
+                resultados.append(erro.codigo)
+            except Exception as erro:  # qualquer outra falha reprova o teste
+                resultados.append(f"erro inesperado: {erro!r}")
+
+        # Act: 20 pedidos ao mesmo tempo
+        threads = [threading.Thread(target=pedir_emprestimo) for _ in range(PEDIDOS_SIMULTANEOS)]
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join()
+
+        # Assert: um aceito, os demais recusados, e um único empréstimo gravado
+        with fabrica_de_sessoes() as sessao:
+            ativos_no_banco = contar_emprestimos_ativos(sessao, aluno_id)
+
+>       assert resultados.count("aceito") == 1, resultados
+E       AssertionError: ['aceito', 'aceito', 'aceito', 'limite_atingido', 'limite_atingido', 'limite_atingido', ...]
+E       assert 15 == 1
+E        +  where 15 = <built-in method count of list object at 0x000002C364297D00>('aceito')
+E        +    where <built-in method count of list object at 0x000002C364297D00> = ['aceito', 'aceito', 'aceito', 'limite_atingido', 'limite_atingido', 'limite_atingido', ...].count
+
+tests\integration\test_concorrencia.py:92: AssertionError
+=============================================== short test summary info ===============================================
+FAILED tests/integration/test_concorrencia.py::test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[1] - AssertionError: ['aceito', 'aceito', 'aceito', 'limite_atingido', 'aceito', 'limite_atingido', ...]
+FAILED tests/integration/test_concorrencia.py::test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[2] - AssertionError: ['aceito', 'aceito', 'aceito', 'limite_atingido', 'limite_atingido', 'aceito', ...]
+FAILED tests/integration/test_concorrencia.py::test_pedidos_simultaneos_pelo_mesmo_exemplar_geram_um_unico_emprestimo[3] - AssertionError: ['aceito', 'aceito', 'aceito', 'limite_atingido', 'limite_atingido', 'limite_atingido', ...]
+================================================== 3 failed in 1.28s ==================================================
