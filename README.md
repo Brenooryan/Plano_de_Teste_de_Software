@@ -7,9 +7,44 @@ Plano de teste completo para uma API REST de biblioteca acadêmica, do planejame
 
 **Resultado:** a versão 1.0.0 (commit `af9663c`) passou nos 7 critérios de aceitação, com 147 testes aprovados, 98,6% de cobertura combinada e nenhum defeito crítico aberto. Os testes encontraram 4 defeitos; 3 foram corrigidos e verificados por reexecução.
 
-> Projeto acadêmico da disciplina **Qualidade de Software** (Avaliação 2: Projeto Final de Disciplina), Engenharia da Computação, **UNISAL** (Centro Universitário Salesiano de São Paulo). Professor: Warner.
->
-> **Integrantes:** Breno Ryan de Andrade Fernandes, Daniel Marton, João Vitor Azevedo e Mariana Freitas.
+## Sobre o projeto
+
+### O que é
+
+Este repositório reúne duas coisas que se completam:
+
+1. **Um plano de teste de software completo.** É o trabalho principal. O plano define o que será testado e o que fica de fora, com que estratégia, técnicas e ferramentas, quais critérios decidem se o sistema passou e quais riscos ameaçam a qualidade. Depois, registra a execução real: casos de teste com evidências, defeitos encontrados, correções, métricas e uma análise crítica dos resultados.
+2. **O sistema-alvo do plano.** Uma API REST de biblioteca acadêmica, em Python com FastAPI, que o próprio grupo especificou e construiu para servir de objeto dos testes.
+
+O foco é o **processo de teste**. A API existe para ser testada, e o valor do projeto está em mostrar como cada decisão de teste foi tomada e o que ela encontrou.
+
+### Objetivo
+
+**Objetivo geral:** elaborar e executar um plano de teste completo para um sistema de software, aplicando práticas profissionais de engenharia de testes, do planejamento estratégico à execução controlada dos casos de teste, com análise crítica dos resultados obtidos.
+
+**Objetivos específicos:**
+
+- verificar a correção das regras de negócio (multa, limites, prazos e a decisão de emprestar), inclusive nos valores de fronteira;
+- garantir a consistência dos dados: um exemplar nunca pode estar em dois empréstimos ativos, nem sob requisições simultâneas;
+- verificar a segurança de login e de acesso: credenciais inválidas, token vencido ou adulterado, perfil sem permissão e leitura de dados de outro usuário precisam ser barrados;
+- verificar a interoperabilidade dos módulos: uma devolução atrasada gera multa, e a multa bloqueia o próximo empréstimo até o pagamento;
+- medir o desempenho sob carga e a resistência a ataques comuns (OWASP Top 10).
+
+### Para que foi feito
+
+É o projeto final (**Avaliação 2: Projeto Final de Disciplina, Plano de Teste de Software**) da disciplina **Qualidade de Software**, do curso de Engenharia da Computação do **UNISAL** (Centro Universitário Salesiano de São Paulo), com o professor Warner. O objetivo da avaliação é demonstrar domínio das técnicas estudadas, senso crítico sobre o processo de verificação e validação, e decisões fundamentadas para mitigar riscos de qualidade.
+
+Os entregáveis pedidos são: relatório técnico em PDF, apresentação, planilha com os testes executados e código dos testes automatizados. Todos estão neste repositório (seção 11).
+
+**Por que uma API de biblioteca?**
+
+- É um domínio que qualquer pessoa entende, sem precisar de conhecimento técnico de uma área específica.
+- As regras têm números e fronteiras claros (3 ou 5 livros, 7 ou 14 dias, R$ 1,00 por dia com teto de R$ 30,00), ideais para análise do valor limite e tabela de decisão.
+- As falhas teriam consequências reais: financeira (multa cobrada errado), de privacidade (dados pessoais de alunos expostos, com implicação na LGPD) e de consistência (um livro emprestado a duas pessoas).
+
+**Por que construir o próprio sistema?** Com acesso ao código, o grupo combinou testes de caixa-branca (unitários e medição de cobertura) com testes de caixa-preta (sistema, carga e segurança), corrigiu os defeitos encontrados e reexecutou os testes para provar cada correção.
+
+**Integrantes:** Breno Ryan de Andrade Fernandes, Daniel Marton, João Vitor Azevedo e Mariana Freitas.
 
 ## Sumário
 
